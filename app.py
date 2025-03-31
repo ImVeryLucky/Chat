@@ -22,9 +22,9 @@ def get_count():
 
 @app.route('/process', methods=['POST'])
 def process_input():
-    data = request.json  # Receive JSON data from frontend
-    user_input = data.get("user_input", "")  # Get the user input
-    response_text = f"You entered: {user_input}"  # Process input
+    data = request.json  
+    user_input = data.get("user_input")  
+    response_text = f"You entered: {user_input}" 
     return jsonify({"response": response_text})
 
 
