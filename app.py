@@ -5,6 +5,8 @@ app = Flask(__name__, template_folder="templates")
 CORS(app)
 
 counter = 0  # Initial counter value
+user_input = None
+
 
 @app.route('/')
 def home():
@@ -22,11 +24,15 @@ def get_count():
 
 @app.route('/process', methods=['POST'])
 def process():
+    global user_input
     data = request.json  
     user_input = data.get("user_input")  
    #response_text = f"You entered: {user_input}" 
     return jsonify({"response": user_input})
 
+@app.route('/fetch', methods=['GET'])
+def fetch():
+    return jsonify({"response": user_input})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000, debug=True)  # Render runs on port 10000

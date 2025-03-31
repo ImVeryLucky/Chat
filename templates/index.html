@@ -40,7 +40,7 @@
             document.getElementById('count').innerText = data.count;
         }
 
-        fetchCount(); // Load initial count
+        fetchCount(); 
     </script>
 </head>
 <body>
@@ -59,10 +59,15 @@
                 body: JSON.stringify({ "user_input": userInput })
             });
             const data = await response.json();
-            document.getElementById('response').innerText = "howdy";//data.response;
+            document.getElementById('response').innerText = data.response;//data.response;
             
         }
-        
+        /*async function fetchInput() {
+            const response = await fetch('/fetch');
+            const data = await response.json();
+            document.getElementById('response').innerText = data.response;
+        }
+        fetchInput();*/
     </script>
 </body>
 
