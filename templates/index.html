@@ -26,7 +26,7 @@
 <body>
     <p>enter something</p>
     <input type="text" id="userInput" placeholder="Type Anything:" />
-    <p>Output: <span id="responseText"></span></p>
+    <p>Output: <span id="response"></span></p>
     <script>
         
         async function sendInput() {
@@ -39,7 +39,7 @@
             });
         }
         const data = await response.json();
-        document.getElementById('responseText').innerText = data.response;
+        document.getElementById('response').innerText = data.response;
     </script>
 </body>
 
