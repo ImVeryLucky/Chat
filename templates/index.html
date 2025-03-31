@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        head{
+            background-color: lightblue;
+        }
+        h1{
+            color:white
+        }
+        p{
+            color:bisque
+        }
+        body{
+            background-color: darkgreen;
+
+        }
+    </style>
+
     <title>Render Button App</title>
     <h1>Button Click Counter</h1>
     <p>Count: <span id="count">0</span></p>
@@ -38,8 +55,8 @@
             
             const response = await fetch('/process', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ user_input: userInput })
+                headers: { 'Content-Type': 'request/json' },
+                body: JSON.stringify({ "user_input": userInput })
             });
         }
         const data = await response.json();
