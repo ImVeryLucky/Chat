@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Updater</title>
+</head>
+<body>
+    <h1>Button Click Counter</h1>
+    <p>Count: <span id="count">0</span></p>
+    <button onclick="updateCount()">Click Me</button>
+
+    <script>
+        async function updateCount() {
+            const response = await fetch('http://127.0.0.1:5000/update', { method: 'POST' });
+            const data = await response.json();
+            document.getElementById('count').innerText = data.count;
+        }
+
+        async function fetchCount() {
+            const response = await fetch('http://127.0.0.1:5000/get_count');
+            const data = await response.json();
+            document.getElementById('count').innerText = data.count;
+        }
+
+        fetchCount(); // Load initial count
+    </script>
+</body>
+</html>
