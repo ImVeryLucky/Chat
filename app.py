@@ -20,5 +20,13 @@ def update_button():
 def get_count():
     return jsonify({"count": counter})
 
+@app.route('/process', methods=['POST'])
+def process_input():
+    data = request.json  # Receive JSON data from frontend
+    user_input = data.get("user_input", "")  # Get the user input
+    response_text = f"You entered: {user_input}"  # Process input
+    return jsonify({"response": response_text})
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000, debug=True)  # Render runs on port 10000

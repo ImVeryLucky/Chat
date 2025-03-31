@@ -9,13 +9,28 @@
     <h1>Button Click Counter</h1>
     <p>Count: <span id="count">0</span></p>
     <button onclick="updateCount()">Click Me</button>
+    <button onclick = ""></button>
 
+    <input type="text" id="userInput" placeholder="Type Anything:" />
+    <p>Output: <span id="responseText"></span></p>
     <script>
         async function updateCount() {
             const response = await fetch('/update', { method: 'POST' });
             const data = await response.json();
             document.getElementById('count').innerText = data.count;
         }
+        
+        async function sendInput() {
+            const userInput = document.getElementById("userInput").value;
+            
+            const response = await fetch('/process', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_input: userInput })
+            });
+            
+        const data = await response.json();
+        document.getElementById('responseText').innerText = data.response;
 
         async function fetchCount() {
             const response = await fetch('/get_count');
