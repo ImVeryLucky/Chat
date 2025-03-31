@@ -45,11 +45,13 @@
 </head>
 <body>
     <p>enter something</p>
-    <input type="text" id="userInput" placeholder="Type Anything:" />
-    <button onclick = "sendInput()"> Submit</button>
+    <form method="POST">
+        <input type = "text" name="text">
+        <input type="submit">
+    </form>
     <p>Output: <span id="response"></span></p>
     <script>
-        
+        /*
         async function sendInput() {
             const userInput = document.getElementById("userInput").value;
             
@@ -59,9 +61,10 @@
                 body: JSON.stringify({ "user_input": userInput })
             });
             const data = await response.json();
-            document.getElementById('response').innerText = data.response;//data.response;
+            print(data.user_input)
+            document.getElementById('response').innerText = response;//data.response;
             
-        }
+        }*/
         async function fetchInput() {
             const response = await fetch('/fetch');
             const data = await response.json();

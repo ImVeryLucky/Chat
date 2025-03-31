@@ -1,11 +1,11 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS
 
 app = Flask(__name__, template_folder="templates")
 CORS(app)
 
 counter = 0  # Initial counter value
-user_input = None
+user_input = ""
 
 
 @app.route('/')
@@ -15,6 +15,7 @@ def home():
 @app.route('/update', methods=['POST'])
 def update_button():
     global counter
+    print("clicked")
     counter += 1
     return jsonify({"count": counter})
 
@@ -22,13 +23,16 @@ def update_button():
 def get_count():
     return jsonify({"count": counter})
 
-@app.route('/process', methods=['POST'])
+@app.route('/', methods=['POST'])
 def process():
     global user_input
-    data = response.json  
-    user_input = data.get("user_input")  
+    data = request.form
+    user_input = data.get("text")  
    #response_text = f"You entered: {user_input}" 
-    return jsonify({"response": user_input})
+    print(data)
+    return None
+
+
 
 @app.route('/fetch', methods=['GET'])
 def fetch():
