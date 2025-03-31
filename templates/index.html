@@ -1,12 +1,9 @@
-[[extend "layout.html"]]
-[[
-# notice [[... are yatl tags and they contain pure python code, rendered server side
-# while  {{... are vue tags and they contain vue/js code, rendered client side
-]]
+<!DOCTYPE html>
 <html>
   <body>
     <p>this is pretty cool!</p>
     <h1>[[=message]]</h1>
     <h1>insane</h1>
   </body>
+  <script src="[[=URL('static/js/todo.js')]]"></script> 
 </html>>
