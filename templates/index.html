@@ -1,22 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">    
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h1>Elder helper</h1>
-    <style>
-        body{
-            background-color:lightblue
-    
-        }
-    </style>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: rgb(79, 169, 199);
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+
+nav {
+  float: left;
+  width: 30%;
+  height: 600px;
+  background: lightpink;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: wheat;
+  height: 600px;
+}
+
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+footer {
+  background-color: lightgreen;
+  padding: 10px;
+  text-align: center;
+  color: gray   ;
+}
+
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
 </head>
-
 <body>
-    <p>Start using the elder helper</p>
-    <form method = "POST">
-        <input type = "submit" name = "start" value = "start">
-    </form>
-</body>
+<header>
+  <h2>Elder Helper AI: The best emotional chatbot!</h2>
+</header>   
 
+<section>
+  <nav>
+    <ul>
+        <p>Start using the elder helper</p>
+        <form method = "POST">
+              <input type = "submit" name = "start" value = "Start" 
+              style="font-size:20pt;height:100px;width:200px;background:rgb(255, 182, 182)">
+          </form>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>Elder Helper</h1>
+    <p>The best emotional support any elder could ever need!</p>
+    <p>Elder helper is an AI assistant that can help you and your elderly family members!</p>
+    <p>Using HelpingAI's cutting edge emotionally available chat bot, Elder Helper can both help and listen to elderly family members!</p>
+  </article>
+</section>
+
+<footer>
+  <p>Made by hope, for hope</p>
+</footer>
+
+</body>
 </html>
+

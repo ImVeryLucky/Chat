@@ -1,28 +1,61 @@
 from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS
+from ai_interface import Ai_Helper
+from ai_interface import create_schedule
 
 app = Flask(__name__, template_folder="templates")
 CORS(app)
+global ai_instance
+ai_instance = None
+global first_words
+first_words = None
 
 
 @app.route('/')
 def start():
-    return render_template('index.html')\
+    return render_template('index.html')
 
-
-currentHtml = 'index.html'
+#currentHtml = 'index.html'
 
 @app.route('/', methods = ['POST'])
 def home_post():
+    global ai_instance
+    global first_words
     if 'start' in request.form:
-        currentHtml = 'schedule.html'
+        #currentHtml = 'schedule.html'
         return render_template('schedule.html', name = None, gender = None, schedule = None)
+     #Back buttons
+    if 'switchButton2' in request.form:
+        return render_template('index.html', name = None, gender = None, schedule = None)
+    if 'switchButton3' in request.form:
+        return render_template('schedule.html', name = None, gender = None, schedule = None)
+    
     if 'scheduler' in request.form:
         name = request.form['name']
         gender = request.form['gender']
         schedule = request.form['schedule']
-        return render_template('schedule.html', name = name, gender = gender, schedule = schedule)
+        print([item.strip("\r") for item in schedule.split("\n")])
+        try:
+            ai_instance = Ai_Helper(
+                create_schedule([item.strip("\r") for item in schedule.split("\n")]),
+                                    name)
+            output = ai_instance.re_input()
+        except Exception as e:
+            print("ERROR IN INITIATING AI")
+            print(e)
+            return render_template('schedule.html', name=name, gender=gender, schedule=schedule)
+        return render_template('ai.html', output = output)
     
+    if 'prompter' in request.form:
+        prompt = request.form['promptmsg']
+        print(prompt)
+        output = ai_instance.talk(prompt)
+        danger = False
+        if output == "ERROR! Notify an assistant.":
+            danger = True
+        return render_template('ai.html', output=output,
+                               buttonOff = danger)
+
     return render_template('index.html')
 
 

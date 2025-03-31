@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        header{
+            background-color: chocolate;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+        body{
+            background-color:lightblue
+    
+            
+        }
+        nav {
+            float: left;
+            width: 30%;
+            height: 300px; /* only for demonstration, should be removed */
+            background: #ccc;
+            padding: 20px;
+        }
+        article {
+            float: right;
+            padding: 20px;
+            width: 70%;
+            background-color: #f1f1f1;
+            height: 300px; /* only for demonstration, should be removed */
+            }
+        section::after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+        nav ul {
+        list-style-type: none;
+        padding: 0;
+        }
+
+    </style>
+</head>
+<header><h1>Elder Helper: The best AI Buddy</h1></header>
+<body>
+
+    <section>
+        <nav>
+            <ul>
+                <p>Start using the elder helper</p>
+          <form method = "POST">
+                <input type = "submit" name = "start" value = "start">
+            </form>
+        </ul>
+        <article>
+            <h1>Elder Helper</h1>
+            <p>Elder Helper is an AI you can trust to help you and your elderly family members!</p>
+  
+          </article>
+        </nav>
+        
+        <article>
+          <h1>Elder Helper</h1>
+          <p>Elder Helper is an AI you can trust to help you and your elderly family members!</p>
+        </article>
+      </section>
+      
+</body>
+
+</html>

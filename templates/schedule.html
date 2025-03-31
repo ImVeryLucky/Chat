@@ -2,32 +2,49 @@
 <head> 
     <style>
         body{
-            background-color:green
+            background-color:rgb(154, 216, 146);
+            font-family: Arial, Helvetica, sans-serif;
 
         }
-
-        bigbox{
-            height:1000px;
+        top{
+            background-color: rgb(79, 169, 199);
+            padding: 30px;
+            text-align: left;
+            font-size: 35px;
+            color: white;
+        }
+        header {
+            background-color: rgb(79, 169, 199);
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
         }
         </style>
-<form method = "POST">
-    <input type = "submit" name = "switchButton2" value = "back" place>
-</form>
 
+<header>
+    <h2 >Elder Helper</h2>
+    
+</header>
 </head>
 <body>
 <h1>Start entering schedule</h1>
 
 
-<form method = "POST">
-    <input type = "text" name="name" placeholder="Name">
-    <input type = "text" name="gender" placeholder="Gender">
-    <input id = "bigbox" type = "text" name="schedule" placeholder="Schedule">
-    <input type="submit" name = "scheduler">
+<form method = "POST" id = "scheduleForm">
+    <input type = "text" name="name" placeholder="Name"> <br>
+    <input type = "text" name="gender" placeholder="Gender"> <br>
+
 </form>
-<h1>Output:</h1>
-<h2>Name: {{name}}</h2>
-<h2>Gender: {{gender}}</h2>
-<h2>Schedule: {{schedule}}</h2>
+    <textarea id="txtArea" rows="10" cols="10" form="scheduleForm" placeholder="Schedule" 
+    style="font-size:12pt;height:200px;width:400px" name = "schedule"></textarea> <br>
+    <button type="submit" form="scheduleForm" name = "scheduler" value="Submit"
+    style="font-size:14pt;background-color: aquamarine;">Submit Schedule</button>
+
+</form>
+<form method = "POST">
+    <input type = "submit" name = "switchButton2" value = "Back"
+    style="font-size:14pt;background-color: aquamarine;">
+</form>
 </body>
 </html>
