@@ -37,9 +37,10 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_input: userInput })
             });
-            
+        }
         const data = await response.json();
         document.getElementById('responseText').innerText = data.response;
     </script>
 </body>
+
 </html>
