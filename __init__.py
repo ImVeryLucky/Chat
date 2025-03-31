@@ -6,13 +6,13 @@ session = Session()
 @action.uses("index.html", session)  # we use the template index.html and session
 
 @action("page_with_template")
-@action.uses("examples/page_with_template.html")
+@action.uses("index.html")
 def page_with_template():
     return {"message": "Hello World"}
 
 def index():
     session["counter"] = session.get("counter", 0) + 1
     session["user"] = {"id": 1}  # store a user in session
-    return dict(session=session)
+    #return dict(session=session)
     return {"message": "Hello World"}
 
