@@ -1,38 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1>Elder helper</h1>
+    <style>
+        body{
+            background-color:lightblue
+    
+        }
+    </style>
 </head>
+
 <body>
-    <p>enter something</p>
+    <p>Start using the elder helper</p>
     <form method = "POST">
-        <input type = "text" name="text">
-        <input type="submit">
-    </form>>
-    <p>Output: {{response}}</p>
-    <script>
-        
-        async function sendInput() {
-            const userInput = document.getElementById("text").value;
-            
-            const response = await fetch('/process', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ "user_input": userInput })
-            });
-            const data = await response.json();
-            print(data.user_input)
-            document.getElementById('response').innerText = response;//data.response;
-            
-        }
-        async function fetchInput() {
-            const response = await fetch('/fetch');
-            const data = await response.json();
-            document.getElementById('response').innerText = data.response;
-        }
-        fetchInput();
-    </script>
+        <input type = "submit" name = "start" value = "start">
+    </form>
 </body>
 
 </html>

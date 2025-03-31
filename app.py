@@ -4,9 +4,37 @@ from flask_cors import CORS
 app = Flask(__name__, template_folder="templates")
 CORS(app)
 
+
+@app.route('/')
+def start():
+    return render_template('index.html')\
+
+
+currentHtml = 'index.html'
+
+@app.route('/', methods = ['POST'])
+def home_post():
+    if 'start' in request.form:
+        currentHtml = 'schedule.html'
+        return render_template('schedule.html', name = None, gender = None, schedule = None)
+    if 'scheduler' in request.form:
+        name = request.form['name']
+        gender = request.form['gender']
+        schedule = request.form['schedule']
+        return render_template('schedule.html', name = name, gender = gender, schedule = schedule)
+    
+    return render_template('index.html')
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=10000, debug=True)
+
+
+
+
 #counter = 0  # Initial counter value
 #user_input = ""
-
+"""
 
 @app.route('/')
 def home():
@@ -14,8 +42,13 @@ def home():
 
 @app.route('/', methods = ['POST'])
 def home_post():
-    data = request.form['text']
+    if 'switchButton' in request.form:
+        return render_template('2nd.html')
+    if 'switchButton2' in request.form:
+        return render_template('index.html', respones = None)
+    data = request.form['userIn']
     return render_template('index.html', response = data)
+
 
 @app.route('/update', methods=['POST'])
 def update_button():
@@ -28,10 +61,10 @@ def update_button():
 def get_count():
     return jsonify({"count": counter})
 
-@app.route('/', methods=['POST'])
+@app.route('/process', methods=['POST'])
 def process():
     global user_input
-    data = request.form['text']
+    data = request.form['userIn']
     #user_input = data.get("text")  
    #response_text = f"You entered: {user_input}" 
     return render_template('index.html', response = data)
@@ -43,4 +76,4 @@ def process():
 #    return jsonify({"response": user_input})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000, debug=True)  # Render runs on port 10000
+    app.run(host='0.0.0.0', port=10000, debug=True)  # Render runs on port 10000"""
